@@ -11,13 +11,13 @@ function App() {
     const fetchAddress = async () => {
       try {
         const response = await fetch(
-          `/.netlify/functions/getAddress?address1=${address.address1}&address2=${address.address2}&city=${address.city}&state=${address.state}zipcode=${zipcode}`,
+          `/.netlify/functions/getAddress?address1=${address.address1}&address2=${address.address2}&city=${address.city}&state=${address.state}&zipcode=${zipcode}`,
           { headers: { accept: "application/json" } }
         );
         const data = await response.text();
         console.log(data)
 
-        setAddress({...address, address1:"data", address2:"", city:"", state:""})
+        setAddress({...address, address1:data, address2:"", city:"", state:""})
   
       
     } catch (e){
@@ -75,7 +75,7 @@ function App() {
           }}
           />
       </form>
-      {/* <pre>
+      <pre>
         <code>
           {JSON.stringify({
             addr1: address.address1,
@@ -86,7 +86,7 @@ function App() {
             
           })}
         </code>
-      </pre> */}
+      </pre>
     </div>
   );
 }
