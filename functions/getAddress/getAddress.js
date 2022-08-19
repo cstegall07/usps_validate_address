@@ -26,7 +26,7 @@ exports.handler = async function (event, context) {
 
   // The xml variable is the string we are going to send to the
   // USPS to request the information
-  const xml = `<AddressValidateRequest USERID="${USER_ID}"><Address><Address1>${address1}</Address1><Address2>${address2}</Address2><City>${city}</City><State>${state}</State><Zip5>${zipcode}</Zip5></Address></AddressValidateRequest>`;
+  const xml = `<AddressValidateRequestUSERID="${USER_ID}"><Address><Address1>${address1}</Address1><Address2>${address2}</Address2><City>${city}</City><State>${state}</State><Zip5>${zipcode}</Zip5></Address></AddressValidateRequest>`;
   try {
 
     const response = await fetch(`${BASE_URI}${xml}`, config);
