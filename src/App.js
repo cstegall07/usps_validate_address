@@ -80,7 +80,7 @@ function App() {
           />
           <button
           className="submitBtn"
-          > Submit </button>
+          > Submit</button>
       </form>
       <pre>
         <code>
