@@ -89,7 +89,7 @@ function App() {
             addr2: address.address2,
             city: address.city,
             state: address.state,
-            zip: address.zip5
+            zip: zipcode
             
           })}
         </code>
