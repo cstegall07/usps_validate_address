@@ -69,6 +69,10 @@ function App() {
           type="text"
           name="addr1"
           id="addr1"
+          onChange={(event) => {
+            const { value } = event.target;
+            setAddress(value.replace(/[^\d{5}]$/, ""));
+          }}
           />
         <label htmlFor="addr2">Address 2</label>
         <input
@@ -110,9 +114,6 @@ function App() {
             setZipcode(value.replace(/[^\d{5}]$/, "").substr(0, 5));
           }}
           />
-          <button
-          className="submitBtn"
-          > Submit</button>
       </form>
       <pre>
         <code>
