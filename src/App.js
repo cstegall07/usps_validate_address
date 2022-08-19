@@ -32,6 +32,7 @@ function App() {
         <label htmlFor="addr1">Address 1</label>
         <input
           className="addr1"
+          value={address.address1}
           placeholder=""
           type="text"
           name="addr1"
