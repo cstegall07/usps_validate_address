@@ -45,10 +45,6 @@ function App() {
           type="text"
           name="addr1"
           id="addr1"
-          onChange={(event) => {
-            const { value } = event.target;
-            setAddress(value.replace(/[^\d{5}]$/, ""));
-          }}
           />
         <label htmlFor="addr2" className="p-3">Address 2</label>
         <input
