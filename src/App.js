@@ -13,7 +13,7 @@ function App() {
       try {
         // Send a fetch request to the getAddress serverless function
         const response = await fetch(
-          `/functions/getAddress?address1=${address.address1}&address2=${address.address2}&city=${address.city}&state=${address.state}&zipcode=${zipcode}`,
+          `/.netlify/functions/getAddress?address1=${address.address1}&address2=${address.address2}&city=${address.city}&state=${address.state}&zipcode=${zipcode}`,
           { headers: { accept: "application/json" } }
         );
         // Assign the data to the response we receive from the fetch
@@ -33,30 +33,6 @@ function App() {
   }, [address, zipcode]);
 
 
-// function App() {
-//   const intialAddress = {address1: "", address2: "", city: "", state: ""};
-//   const [zipcode, setZipcode] = useState("")
-//   const [address, setAddress] = useState(intialAddress)
-
-  // useEffect(() => {
-
-  //   const fetchAddress = async () => {
-  //     try {
-  //       const response = await fetch(
-  //         `/.netlify/functions/getAddress?address1=${address.address1}&address2=${address.address2}&city=${address.city}&state=${address.state}&zipcode=${zipcode}`,
-  //         { headers: { accept: "application/json" } }
-  //       );
-  //       const data = await response.text();
-  //       console.log(data)
-
-  //       setAddress({...address, address1:"", address2:"", city:"", state:""})
-  
-      
-  //   } catch (e){
-  //     console.log(e)
-  //   }
-  // }; fetchAddress();
-  // })
   return (
     <div className="App place-items-center h-screen bg-lime-50">
       <h1 className="flex justify-center items-center text-4xl text-lime-600 p-5">Goodr Verify Address</h1>
