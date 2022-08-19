@@ -58,12 +58,12 @@ function App() {
   // }; fetchAddress();
   // })
   return (
-    <div className="App">
-      <h1>Goodr Verify Address</h1>
-      <form action="" className="form-data">
-        <label htmlFor="addr1">Address 1</label>
+    <div className="App place-items-center h-screen bg-lime-50">
+      <h1 className="flex justify-center items-center text-4xl text-lime-600 p-5">Goodr Verify Address</h1>
+      <form action="" className="form-data flex justify-center items-center h-[25rem]">
+        <label htmlFor="addr1" className="p-3">Address 1</label>
         <input
-          className="addr1"
+          className="addr1 border"
           value={address.address1}
           placeholder="Street Number"
           type="text"
@@ -74,36 +74,36 @@ function App() {
             setAddress(value.replace(/[^\d{5}]$/, ""));
           }}
           />
-        <label htmlFor="addr2">Address 2</label>
+        <label htmlFor="addr2" className="p-3">Address 2</label>
         <input
-          className="addr2"
+          className="addr2 border"
           value={address.address2 || ""}
           placeholder="Apt or Suite #"
           type="text"
           name="addr2"
           id="addr2"
           />
-        <label htmlFor="addrcity">City</label>
+        <label htmlFor="addrcity" className="p-3">City</label>
         <input
-          className="addrcity"
+          className="addrcity border"
           value={address.city || ""}
           placeholder="City"
           type="text"
           name="addrcity"
           id="addrcity"
           />
-        <label htmlFor="addrstate">State</label>
+        <label htmlFor="addrstate" className="p-3">State</label>
         <input
-          className="addrstate"
+          className="addrstate border"
           value={address.state || ""}
           placeholder="State"
           type="text"
           name="addrstate"
           id="addrstate"
           />
-        <label htmlFor="addrzip5">Zip Code</label>
+        <label htmlFor="addrzip5" className="p-3">Zip Code</label>
         <input
-          className="addrzip5"
+          className="addrzip5 border"
           value={zipcode || ""}
           placeholder="XXXXX"
           type="text"
@@ -116,7 +116,7 @@ function App() {
           />
       </form>
       <pre>
-        <code>
+        <code className="flex justify-center items-center">
           {JSON.stringify({
             addr1: address.address1,
             addr2: address.address2,
