@@ -17,7 +17,7 @@ function App() {
         const data = await response.text();
         console.log(data)
 
-        setAddress({...address, address1:data, address2:"", city:"", state:""})
+        setAddress({...address, address1:"", address2:"", city:"", state:""})
   
       
     } catch (e){
@@ -32,8 +32,8 @@ function App() {
         <label htmlFor="addr1">Address 1</label>
         <input
           className="addr1"
-          value={address.address1}
-          placeholder=""
+          value={address.address1 || ""}
+          placeholder="Street Number"
           type="text"
           name="addr1"
           id="addr1"
@@ -41,7 +41,8 @@ function App() {
         <label htmlFor="addr2">Address 2</label>
         <input
           className="addr2"
-          placeholder=""
+          value={address.address2 || ""}
+          placeholder="Apt or Suite #"
           type="text"
           name="addr2"
           id="addr2"
@@ -49,7 +50,8 @@ function App() {
         <label htmlFor="addrcity">City</label>
         <input
           className="addrcity"
-          placeholder=""
+          value={address.city || ""}
+          placeholder="City"
           type="text"
           name="addrcity"
           id="addrcity"
@@ -57,6 +59,7 @@ function App() {
         <label htmlFor="addrstate">State</label>
         <input
           className="addrstate"
+          value={address.state || ""}
           placeholder=""
           type="text"
           name="addrstate"
@@ -74,6 +77,9 @@ function App() {
             const { value } = event.target;
             setZipcode(value.replace(/[^\d{5}]$/, "").substr(0, 5));
           }}
+          />
+          <button
+          className="submitBtn"
           />
       </form>
       <pre>
