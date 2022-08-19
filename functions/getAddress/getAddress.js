@@ -3,6 +3,7 @@
 const fetch = require('node-fetch')
 
 const USER_ID = process.env.REACT_APP_USERID;
+console.log (USER_ID)
 const BASE_URI =
   "https://secure.shippingapis.com/ShippingAPI.dll?API=Verify&XML=";
 const config = {
@@ -26,7 +27,7 @@ exports.handler = async function (event, context) {
 
   // The xml variable is the string we are going to send to the
   // USPS to request the information
-  const xml = `<AddressValidateRequestUSERID="${USER_ID}"><Address><Address1>${address1}</Address1><Address2>${address2}</Address2><City>${city}</City><State>${state}</State><Zip5>${zipcode}</Zip5></Address></AddressValidateRequest>`;
+  const xml = `<AddressValidateRequestUSERID=${USER_ID}><Address><Address1>${address1}</Address1><Address2>${address2}</Address2><City>${city}</City><State>${state}</State><Zip5>${zipcode}</Zip5></Address></AddressValidateRequest>`;
   try {
 
     const response = await fetch(`${BASE_URI}${xml}`, config);
