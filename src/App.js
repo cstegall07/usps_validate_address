@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 
-
 function App() {
   const intialAddress = {address1: "", address2: "", city: "", state: ""};
   const [zipcode, setZipcode] = useState("")
@@ -9,22 +8,55 @@ function App() {
   useEffect(() => {
 
     const fetchAddress = async () => {
+      // We are using a try/catch block inside an async function
+      // which handles all the promises
       try {
+        // Send a fetch request to the getAddress serverless function
         const response = await fetch(
-          `/.netlify/functions/getAddress?address1=${address.address1}&address2=${address.address2}&city=${address.city}&state=${address.state}&zipcode=${zipcode}`,
+          `/functions/getAddress?address1=${address.address1}&address2=${address.address2}&city=${address.city}&state=${address.state}&zipcode=${zipcode}`,
           { headers: { accept: "application/json" } }
         );
+        // Assign the data to the response we receive from the fetch
         const data = await response.text();
         console.log(data)
 
         setAddress({...address, address1:"", address2:"", city:"", state:""})
+        // The catch(e) will console.error any errors we receive
+      } catch (e) {
+        console.log(e);
+      }
+    };
+    // Run the above function
+    fetchAddress();
+    //The optional array below will run any time the zipcode
+    // field is updated
+  }, [address, zipcode]);
+
+
+// function App() {
+//   const intialAddress = {address1: "", address2: "", city: "", state: ""};
+//   const [zipcode, setZipcode] = useState("")
+//   const [address, setAddress] = useState(intialAddress)
+
+  // useEffect(() => {
+
+  //   const fetchAddress = async () => {
+  //     try {
+  //       const response = await fetch(
+  //         `/.netlify/functions/getAddress?address1=${address.address1}&address2=${address.address2}&city=${address.city}&state=${address.state}&zipcode=${zipcode}`,
+  //         { headers: { accept: "application/json" } }
+  //       );
+  //       const data = await response.text();
+  //       console.log(data)
+
+  //       setAddress({...address, address1:"", address2:"", city:"", state:""})
   
       
-    } catch (e){
-      console.log(e)
-    }
-  }; fetchAddress();
-  })
+  //   } catch (e){
+  //     console.log(e)
+  //   }
+  // }; fetchAddress();
+  // })
   return (
     <div className="App">
       <h1>Goodr Verify Address</h1>
@@ -60,7 +92,7 @@ function App() {
         <input
           className="addrstate"
           value={address.state || ""}
-          placeholder=""
+          placeholder="State"
           type="text"
           name="addrstate"
           id="addrstate"
