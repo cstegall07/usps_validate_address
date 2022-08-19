@@ -2,7 +2,7 @@
 
 const fetch = require('node-fetch')
 
-const USER_ID = "635GOODR3121";
+const USER_ID = process.env.REACT_APP_USERID;
 const BASE_URI =
   "https://secure.shippingapis.com/ShippingAPI.dll?API=Verify&XML=";
 const config = {
